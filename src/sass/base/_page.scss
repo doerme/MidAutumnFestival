@@ -1,3 +1,120 @@
+.hide{
+    display: none !important;
+    pointer-events: none;
+    opacity: 0;
+}
+.toast-window{
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    .toast-window-mask{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top:0;
+        background: rgba(0,0,0,0.7);
+    }
+    .toast-window-main{
+        position: absolute;
+        left: 50%;
+        margin-left: rem(-325);
+        width: rem(650);
+        top: rem(260);
+        background: #FFF;
+        border-radius: rem(20);
+        padding-bottom: rem(25);
+        .twm-title{
+            height: rem(78);
+            line-height: rem(78);
+            text-align: center;
+            border-bottom: rem(3) solid #d3d1d1;
+            font-size: rem(32);
+            color: #333;
+            .twn-t-close{
+                position: absolute;
+                left: rem(30);
+                top: rem(30);
+                width: rem(26);
+                height: rem(26);
+                background: url('../img/page/icon_close.png') no-repeat;
+                background-size: 100%;
+            }
+        }
+        .twm-main{
+            padding-top: rem(40);
+            padding-bottom: rem(45);
+            overflow: hidden;
+            .success{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: rem(192);
+                height: rem(192);
+                margin-top: rem(35);
+            }
+            .success-note{
+                width: 100%;
+                font-size: rem(28);
+                color: #666;
+                text-align: center;
+                height: rem(35);
+                line-height: rem(35);
+            }
+            .twn-m-body{
+                .twn-choose{
+                    display: block;
+                    width: rem(280);
+                    height: rem(80);
+                    text-align: center;
+                    font-size: rem(36);
+                    color: #666;
+                    border: rem(3) solid #d3d1d1;
+                    border-radius: rem(20);
+                    line-height: rem(80);
+                    &:nth-child(1){
+                        float: left;
+                        margin-left: rem(30);
+                    }
+                    &:nth-child(2){
+                        float: right;
+                        margin-right: rem(30);
+                    }
+                    &.selected{
+                        color: #fe3000;
+                        border-color: #fe3000;
+                    }
+                }
+                &.min{
+                    .twn-choose{
+                        float: left !important;
+                        width: rem(180);
+                        margin-right: 0 !important;
+                        margin-left: rem(20);
+                        margin-bottom: rem(5);
+                    }
+                }
+            }
+        }
+        .twm-main-bt{
+            margin-top: rem(0);
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+            display: block;
+            width: rem(586);
+            height: rem(100);
+            text-align: center;
+            line-height: rem(100);
+            background: #fedd00;
+            font-size: rem(36);
+            color: #2f2b0e;
+            border-radius: rem(20);
+        }
+    }
+}
 .common-bottom{
     position: fixed;
     width: 100%;
@@ -49,6 +166,85 @@
             &:nth-child(4){
                 background: url('../img/page/icon_bottom_gold.png') no-repeat center rem(8);
                 background-size: rem(48) rem(48); 
+            }
+        }
+    }
+}
+
+.roomlist-wrap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    background: #f9f9f8;
+    .roomlist-banner{
+        width: 100%;
+        height: rem(155);
+    }
+    .create-room-bt{
+        width: rem(200);
+        height: rem(85);
+        line-height: rem(85);
+        text-align: center;
+        left: 50%;
+        margin-left: rem(-100);
+        font-size: rem(28);
+        color: #2f2b0e;
+        position: fixed;
+        bottom: rem(200);
+        background: #fedd00;
+        box-shadow: rem(5) rem(5) rem(5) #888;
+        border-radius: rem(20);
+    }
+    .roomlist-main{
+        padding-bottom: rem(100);
+        li{
+            position: relative;
+            overflow: hidden;
+            margin-left: rem(25);
+            margin-right: rem(25);
+            height: rem(135);
+            border-radius: rem(20);
+            background: #FFF;
+            margin-top: rem(20);
+            .rl-avatar{
+                position: absolute;
+                width: rem(95);
+                height: rem(95);
+                border-radius: 50%;
+                left: rem(20);
+                top: rem(22);
+            }
+            .rl-name{
+                position: absolute;
+                font-size: rem(30);
+                color: #4d4d4d;
+                left: rem(130);
+                top: rem(32);
+            }
+            .rl-num{
+                position: absolute;
+                font-size: rem(24);
+                color: #6d6d6d;
+                left: rem(130);
+                top: rem(82);
+            }
+            .rl-in{
+                display: block;
+                position: absolute;
+                width: rem(110);
+                height: rem(70);
+                text-align: center;
+                line-height: rem(70);
+                font-size: rem(28);
+                color: #2f2b0e;
+                background: #fedd00;
+                top: rem(30);
+                right: rem(20);
+                border-radius: rem(20);
             }
         }
     }
