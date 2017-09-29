@@ -1,0 +1,166 @@
+.common-bottom{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: rem(100);
+    border-top: rem(3) solid #d3d1d1;
+    li{
+        width: 25%;
+        float: left;
+        text-align: center;
+        display: block;
+        a{
+            display: block;
+            font-size: rem(22);
+            color: #aeaeae;
+            line-height: rem(140);
+        }
+        &:nth-child(1){
+            background: url('../img/page/icon_bottom_home2.png') no-repeat center rem(8);
+            background-size: rem(48) rem(48); 
+        }
+        &:nth-child(2){
+            background: url('../img/page/icon_bottom_friend2.png') no-repeat center rem(8);
+            background-size: rem(48) rem(48); 
+        }
+        &:nth-child(3){
+            background: url('../img/page/icon_bottom_share2.png') no-repeat center rem(8);
+            background-size: rem(48) rem(48);
+        }
+        &:nth-child(4){
+            background: url('../img/page/icon_bottom_gold2.png') no-repeat center rem(8);
+            background-size: rem(48) rem(48); 
+        }
+        &.cur{
+            &:nth-child(1){
+                background: url('../img/page/icon_bottom_home.png') no-repeat center rem(8);
+                background-size: rem(48) rem(48); 
+            }
+            &:nth-child(2){
+                background: url('../img/page/icon_bottom_friend.png') no-repeat center rem(8);
+                background-size: rem(48) rem(48); 
+            }
+            &:nth-child(3){
+                background: url('../img/page/icon_bottom_share.png') no-repeat center rem(8);
+                background-size: rem(48) rem(48);
+            }
+            &:nth-child(4){
+                background: url('../img/page/icon_bottom_gold.png') no-repeat center rem(8);
+                background-size: rem(48) rem(48); 
+            }
+        }
+    }
+}
+
+.wallet-wrap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top:0;
+    .page-cover{
+        position: absolute;
+        width: rem(140);
+        height: rem(140);
+        left: 50%;
+        margin-left: rem(-70);
+        top: rem(40);
+    }
+    .page-note{
+        position: absolute;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: #333;
+        font-size: rem(24);
+        top: rem(198);
+    }
+    .page-price{
+        position: absolute;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: rem(48);
+        color: #333;
+        top: rem(246);
+    }
+    .bt-left{
+        position: absolute;
+        display: block;
+        width: rem(335);
+        height: rem(90);
+        top: rem(325);
+        left: rem(30);
+        background: #fedd00;
+        text-align: center;
+        line-height: rem(90);
+        font-size: rem(32);
+        color: #2f2b0e;
+        border-radius: rem(20);
+    }
+    .bt-right{
+        position: absolute;
+        display: block;
+        width: rem(335);
+        height: rem(90);
+        top: rem(325);
+        right: rem(30);
+        background: #f7f7f7;
+        border: rem(3) solid #cccccc;
+        border-radius: rem(20);
+        text-align: center;
+        line-height: rem(90);
+        font-size: rem(32);
+        color: #2f2b0e;
+    }
+    .wallet-list-top{
+        position: relative;
+    }
+}
+
+.qrcode-wrap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top:0;
+    .user-head{
+        position: absolute;
+        width: rem(105);
+        height: rem(105);
+        left: 50%;
+        margin-left: rem(-52);
+        top: rem(70);
+        border-radius: 50%;
+        border: rem(3) solid #fedd00;
+    }
+    .user-name{
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        font-size: rem(32);
+        color: #333333;
+        left: 0;
+        top: rem(215);
+    }
+    .qrcode-img{
+        position: absolute;
+        width: rem(455);
+        height: rem(455);
+        border: rem(3) solid #fedd00;
+        left: 50%;
+        margin-left: rem(-228);
+        top: rem(290);
+    }
+    .qrcode-note{
+        position: absolute;
+        color: #858585;
+        font-size: rem(28);
+        width: 100%;
+        text-align: center;
+        left: 0;
+        text-align: center;
+        top: rem(800);
+    }
+}
