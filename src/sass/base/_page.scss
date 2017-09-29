@@ -1,10 +1,11 @@
 .common-bottom{
-    position: absolute;
+    position: fixed;
     width: 100%;
     left: 0;
     bottom: 0;
     height: rem(100);
     border-top: rem(3) solid #d3d1d1;
+    background: #FFF;
     li{
         width: 25%;
         float: left;
@@ -59,6 +60,8 @@
     height: 100%;
     left: 0;
     top:0;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
     .page-cover{
         position: absolute;
         width: rem(140);
@@ -116,6 +119,110 @@
     }
     .wallet-list-top{
         position: relative;
+        width: 100%;
+        margin-top: rem(445);
+        ul{
+            overflow: hidden;
+        }
+        li{
+            overflow: hidden;
+            position: relative;
+            height: rem(100);
+            line-height: rem(100);
+            margin-left: rem(30);
+            margin-right: rem(30);
+            border-bottom: rem(3) solid #cccccc;
+            &:last-child{
+                border-bottom: none;
+            }
+            .col1{
+                display: inline-block;
+                font-size: rem(32);
+                color: #333;
+                width: rem(500);
+            }
+            .col2{
+                display: inline-block;
+                font-size: rem(32);
+                color: #333;
+                width: rem(90);
+                text-align: right;
+            }
+            .col3{
+                display: inline-block;
+                width: rem(80);
+                height: rem(52);
+                text-align: center;
+                line-height: rem(52);
+                font-size: rem(24);
+                color: #2f2b0e;
+                background: #fedd00;
+            }
+        }
+    }
+    .wallet-list{
+        padding-bottom: rem(100); 
+        li{
+            overflow: hidden;
+            position: relative;
+            height: rem(120);
+            line-height: rem(120);
+            margin-left: rem(30);
+            margin-right: rem(30);
+            border-bottom: rem(3) solid #cccccc;
+            &:last-child{
+                border-bottom: none;
+            }
+            .col1-wrap{
+                display: inline-block;
+                position: relative;
+                width: rem(500);
+                vertical-align: middle;
+                .col1-top{
+                    display: block;
+                    font-size: rem(32);
+                    color: #333;
+                    height: rem(60);
+                    line-height: rem(60);
+                }
+                .col1-bottom{
+                    display: block;
+                    font-size: rem(24);
+                    color: #a8a8a8;
+                    height: rem(44);
+                    line-height: rem(44);
+                }
+            }
+            .col2{
+                display: inline-block;
+                font-size: rem(32);
+                color: #333;
+                width: rem(90);
+                text-align: right;
+                vertical-align: middle;
+            }
+            .col3{
+                display: inline-block;
+                width: rem(80);
+                height: rem(52);
+                text-align: center;
+                line-height: rem(52);
+                font-size: rem(24);
+                color: #2f2b0e;
+                background: #fedd00;
+                vertical-align: middle;
+            }
+        }
+    }
+    .mid-title{
+        position: relative;
+        overflow: hidden;
+        font-size: rem(26);
+        color: #666666;
+        background: #f9f9f8;
+        height: rem(80);
+        line-height: rem(80);
+        text-indent: rem(25);
     }
 }
 
