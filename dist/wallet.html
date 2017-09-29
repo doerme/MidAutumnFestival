@@ -19,8 +19,8 @@
         <img class="page-cover" src="./img/page/icon_coin.png" />
         <div class="page-note">我的余额</div>
         <div class="page-price">￥55</div>
-        <a class="bt-left yellow" href="javascript:;">充值</a>
-        <a class="bt-right" href="javascript:;">提现</a>
+        <a class="bt-left yellow js-cz-bt" href="javascript:;">充值</a>
+        <a class="bt-right js-tx-bt" href="javascript:;">提现</a>
         <div class="wallet-list-top">
             <ul>
                 <li>
@@ -49,7 +49,7 @@
                         <span class="col1-bottom">2017-10-01 18:22:05</span>
                     </div>
                     <span class="col2">+4</span>
-                    <span class="col3">提现</span>
+                    <span class="col4 done">已完成</span>
                 </li>
                 <li>
                     <div class="col1-wrap">
@@ -57,7 +57,7 @@
                         <span class="col1-bottom">2017-10-01 18:22:05</span>
                     </div>
                     <span class="col2">+4</span>
-                    <span class="col3">提现</span>
+                    <span class="col4 wait">等待中</span>
                 </li>
                 <li>
                     <div class="col1-wrap">
@@ -65,7 +65,7 @@
                         <span class="col1-bottom">2017-10-01 18:22:05</span>
                     </div>
                     <span class="col2">+4</span>
-                    <span class="col3">提现</span>
+                    <span class="col4 wait">等待中</span>
                 </li>
                 <li>
                     <div class="col1-wrap">
@@ -73,7 +73,7 @@
                         <span class="col1-bottom">2017-10-01 18:22:05</span>
                     </div>
                     <span class="col2">+4</span>
-                    <span class="col3">提现</span>
+                    <span class="col4 wait">等待中</span>
                 </li>
                 <li>
                     <div class="col1-wrap">
@@ -81,19 +81,67 @@
                         <span class="col1-bottom">2017-10-01 18:22:05</span>
                     </div>
                     <span class="col2">+4</span>
-                    <span class="col3">提现</span>
+                    <span class="col4 done">已完成</span>
                 </li>
             </ul>
         </div>
     </div>
     <div class="common-bottom">
         <ul>
-            <li><a>房间</a></li>
+            <li><a href="roomlist.html">房间</a></li>
             <li ><a href="fans.html">粉丝</a></li>
             <li ><a href="qrcode.html">分享</a></li>
             <li  class="cur"><a href="wallet.html">钱包</a></li>
         </ul>
     </div>
+
+    <!-- 提示弹窗 -->
+    <!-- 充值弹窗 -->
+    <div class="toast-window js-cz-window hide">
+        <div class="toast-window-mask"></div>
+        <div class="toast-window-main">
+            <div class="twm-title">
+                <div class="twn-t-close"></div>
+                充值
+            </div>
+            <div class="twm-main">
+                <div class="twn-m-body min js-room-choose">
+                    <div data-num="10" class="twn-choose selected">10</div>
+                    <div data-num="30" class="twn-choose">30</div>
+                    <div data-num="50" class="twn-choose">50</div>
+                    <div data-num="100" class="twn-choose">100</div>
+                    <div data-num="200" class="twn-choose">200</div>
+                    <div data-num="500" class="twn-choose">500</div>
+                </div>
+                
+            </div>
+            <a class="twm-main-bt js-cz-now" href="javascript:;">确认</a>
+        </div>
+    </div>
+    <!-- 提现弹窗 -->
+    <div class="toast-window js-tx-window hide">
+        <div class="toast-window-mask"></div>
+        <div class="toast-window-main">
+            <div class="twm-title">
+                <div class="twn-t-close"></div>
+                提现
+            </div>
+            <div class="twm-main">
+                <div class="twn-m-body min js-room-choose">
+                    <div data-num="10" class="twn-choose selected">10</div>
+                    <div data-num="30" class="twn-choose">30</div>
+                    <div data-num="50" class="twn-choose">50</div>
+                    <div data-num="100" class="twn-choose">100</div>
+                    <div data-num="200" class="twn-choose">200</div>
+                    <div data-num="500" class="twn-choose">500</div>
+                </div>
+                
+            </div>
+            <a class="twm-main-bt js-tx-now" href="javascript:;">确认</a>
+        </div>
+    </div>
+
+    <!-- 提示弹窗end -->
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script>    
         $(function(){
@@ -104,6 +152,39 @@
                 },
                 bindEvent: function(){
                     var self = this;
+                    /**  充值弹窗*/
+                    $('.js-cz-bt').on('click', function(){
+                        $('.js-cz-window').removeClass('hide');
+                    })
+                    /**  提现弹窗*/
+                    $('.js-tx-bt').on('click', function(){
+                        $('.js-tx-window').removeClass('hide');
+                    })
+
+                    /** 数量类型选择*/
+                    $('.js-room-choose').on('click','.twn-choose', function(){
+                        $('.js-room-choose > .selected').removeClass('selected');
+                        $(this).addClass('selected')
+                    })
+
+                    /** 马上充值点击*/
+                    $('.js-cz-now').on('click', function(){
+                        $('.js-cz-window').addClass('hide');
+                    })
+
+                    /** 马上提现点击*/
+                    $('.js-tx-now').on('click', function(){
+                        $('.js-tx-window').addClass('hide');
+                    })
+
+                    /** 通用弹窗关闭*/
+                    $('.toast-window-mask').on('click', function(){
+                        $(this).parent('.toast-window').addClass('hide');
+                    })
+                    /** 通用弹窗关闭*/
+                    $('.twn-t-close, .js-win-close').on('click', function(){
+                        $(this).parents('.toast-window').addClass('hide');
+                    })
                     
                 }
             }
