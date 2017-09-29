@@ -54,6 +54,59 @@
     }
 }
 
+.fans-wrap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    .fans-list-main{
+        padding-bottom: rem(100);
+        li{
+            position: relative;
+            margin-left: rem(30);
+            margin-right: rem(30);
+            height: rem(120);
+            line-height: rem(120);
+            border-bottom: rem(3) solid #cccccc;
+            .fans-avatar{
+                position: absolute;
+                width: rem(80);
+                height: rem(80);
+                border-radius: 50%;
+                left: 0;
+                top: rem(20);
+
+            }
+            .fans-name{
+                position: absolute;
+                width: rem(440);
+                font-size: rem(32);
+                color: #333;
+                left: rem(150);
+                top: 0;
+            }
+            .fan-local{
+                position: absolute;
+                font-size: rem(24);
+                color: #a8a8a8;
+                right: 0;
+                top: 0;
+            }
+        }
+    }
+    .loading-tips{
+        overflow: hidden;
+        width: 100%;
+        height: rem(160);
+        line-height: rem(160);
+        font-size: rem(26);
+        text-align: center;
+    }
+}
+
 .wallet-wrap{
     position: absolute;
     width: 100%;
