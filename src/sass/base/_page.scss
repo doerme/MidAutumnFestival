@@ -209,7 +209,79 @@
         top: rem(680);
     }
 }
-
+.room-wrap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    background: #f9f9f8;
+    .room-main-list{
+        li{
+            overflow: hidden;
+            position: relative;
+            padding-left: rem(30);
+            padding-right: rem(30);
+            padding-top: rem(45);
+        }
+    }
+    .user-avatar{
+        display: block;
+        width: rem(80);
+        height: rem(80);
+        float: left;
+    }
+    .content-wrap{
+        display: block;
+        width: rem(610);
+        float: left;
+    }
+    .user-name{
+        display: block;
+        font-size: rem(26);
+        color: #333;
+        line-height: rem(45);
+        text-indent: rem(15);
+    }
+    .user-msg{
+        position: relative;
+        margin-top: rem(10);
+        background: #FFF;
+        font-size: rem(30);
+        color: #333;
+        padding-left: rem(20);
+        padding-right: rem(20);
+        line-height: rem(70); 
+        border: rem(2) solid #d9d9d9;
+        margin-left: rem(30);
+        float: left;
+        text-align: left;
+        border-radius: rem(10);
+        &::after{
+            content: '';
+            position: absolute;
+            background: url('../img/page/talk_mark.png') no-repeat;
+            width: rem(25);
+            height: rem(20);
+            background-size: 100%;
+            left: rem(-23);
+            top: rem(-2);
+            
+        }
+    }
+    .user-redpc{
+        position: relative;
+        display: block;
+        margin-top: rem(10);
+        width: rem(401);
+        height: rem(144);
+        background: url('../img/page/redpc_from_left.png') no-repeat;
+        background-size: 100%;
+        margin-left: rem(20); 
+    }
+}
 .roomlist-wrap{
     position: absolute;
     width: 100%;
