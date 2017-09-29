@@ -225,6 +225,50 @@
             padding-left: rem(30);
             padding-right: rem(30);
             padding-top: rem(45);
+            &.mine{
+                .user-avatar{
+                    float: right;
+                }
+                .user-name{
+                    margin-left: rem(0);
+                    margin-right: rem(15);
+                }
+                .content-wrap{
+                    float: right;
+                    text-align: right;
+                }
+                .user-msg{
+                    float: right;
+                    margin-left: rem(0);
+                    margin-right: rem(30);
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        background: url('../img/page/talk_mark.png') no-repeat;
+                        width: rem(25);
+                        height: rem(20);
+                        background-size: 100%;
+                        right: rem(-23);
+                        top: rem(-2);
+                        left: auto;
+                        -moz-transform:scaleX(-1);
+                        -webkit-transform:scaleX(-1);
+                        -o-transform:scaleX(-1);
+                        transform:scaleX(-1);
+                    }
+                }
+                .user-redpc{
+                    float: right;
+                    background: url('../img/page/redpc_from_right.png') no-repeat;
+                    background-size: 100%;
+                    margin-left: rem(0);
+                    margin-right: rem(20);
+                    &.done{
+                        background: url('../img/page/redpc_from_right2.png') no-repeat;
+                        background-size: 100%;
+                    }
+                }
+            }
         }
     }
     .user-avatar{
@@ -243,13 +287,13 @@
         font-size: rem(26);
         color: #333;
         line-height: rem(45);
-        text-indent: rem(15);
+        margin-left: rem(15);
     }
     .user-msg{
         position: relative;
         margin-top: rem(10);
         background: #FFF;
-        font-size: rem(30);
+        font-size: rem(28);
         color: #333;
         padding-left: rem(20);
         padding-right: rem(20);
@@ -268,7 +312,6 @@
             background-size: 100%;
             left: rem(-23);
             top: rem(-2);
-            
         }
     }
     .user-redpc{
@@ -279,7 +322,33 @@
         height: rem(144);
         background: url('../img/page/redpc_from_left.png') no-repeat;
         background-size: 100%;
-        margin-left: rem(20); 
+        margin-left: rem(20);
+        float: left;
+        &.done{
+            background: url('../img/page/redpc_from_left2.png') no-repeat;
+            background-size: 100%;
+        }
+        .ur-title{
+            position: absolute;
+            font-size: rem(32);
+            color: #FFF;
+            left: rem(108);
+            top: rem(20);
+        }
+        .ur-note{
+            position: absolute;
+            font-size: rem(24);
+            color: #FFF;
+            left: rem(108);
+            top: rem(60);
+        }
+        .ur-bottom{
+            position: absolute;
+            font-size: rem(22);
+            color: #ababab;
+            left: rem(38);
+            top: rem(110);
+        }
     }
 }
 .roomlist-wrap{
