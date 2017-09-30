@@ -3,6 +3,41 @@
     pointer-events: none;
     opacity: 0;
 }
+.room-total-num{
+    position: fixed;
+    top: rem(25);
+    right: rem(-35);
+    border-radius: rem(40);
+    padding: rem(20);
+    font-size: rem(30);
+    color: #fe3000;
+    background: #FFF;
+    box-shadow: rem(5) rem(5) rem(5) #CCC;
+    padding-right: rem(50); 
+    &::before{
+        content: '';
+        background: url('../img/page/room_gold_icon.png') no-repeat;
+        width: rem(22);
+        height: rem(32);
+        background-size: 100%; 
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: rem(10);
+    }    
+}
+.main-toast-window{
+    position: fixed;
+    width: 74%;
+    padding: 3%;
+    background: #FFF;
+    border: rem(2) solid #CCC;
+    text-align: center;
+    font-size: rem(24);
+    color: #333;
+    left: 10%;
+    top: 40%;
+    line-height: rem(40);
+}
 .toast-window{
     position: fixed;
     left: 0;

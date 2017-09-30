@@ -86,6 +86,9 @@
             <div class="emit-bt">发送</div>
         </div>
     </div>
+    <!-- 房间金币总数 -->
+    <div class="room-total-num">999999999</div>
+    <!-- 房间金币总数end -->
     <!-- 红包弹窗 -->
     <div class="toast-window js-redrp-open hide">
         <div class="toast-window-mask"></div>
@@ -106,6 +109,11 @@
         <div class="rrw-tips">已存入钱包，可直接消费</div>
     </div>
     <!-- 红包结果end -->
+    <!-- toast -->
+    <div class="main-toast-window hide">
+        你已在大大大房间内，不能同时进两个房间哦
+    </div>
+    <!-- toast end -->
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script>    
         $(function(){
@@ -116,6 +124,18 @@
                 },
                 bindEvent: function(){
                     var self = this;
+                    /** 返回大厅*/
+                    $('.bt-dating').on('click', function(){
+
+                    })
+                    /** 加入房间*/
+                    $('.bt-jiaru').on('click', function(){
+                        
+                    })
+                    /** 退出房间*/
+                    $('.bt-tuichu').on('click', function(){
+                        
+                    })
                     /** 领取红包*/
                     $('.js-open-redpc').on('click', function(){
                         $('.js-redrp-open').removeClass('hide');
@@ -137,7 +157,6 @@
                     $('.rrw-close').on('click', function(){
                         $('.js-redpc-rs').addClass('hide');
                     })
-                    
                 }
             }
             app.init();
