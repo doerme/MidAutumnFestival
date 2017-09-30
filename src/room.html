@@ -17,65 +17,8 @@
 
 <body>
     <div class="room-wrap">
-        <ul class="room-main-list">
-            <li>
-                <img class="user-avatar" src="./img/page/dg_head.jpg" />
-                <div class="content-wrap">
-                    <div class="user-name">大安大厦</div>
-                    <div class="user-redpc js-open-redpc">
-                        <div class="ur-title">红包</div>
-                        <div class="ur-note">红包未领取</div>
-                        <div class="ur-bottom">微信红包</div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img class="user-avatar" src="./img/page/dg_head.jpg" />
-                <div class="content-wrap">
-                    <div class="user-name">大安大厦</div>
-                    <div class="user-redpc done">
-                        <div class="ur-title">红包</div>
-                        <div class="ur-note">红包已领取</div>
-                        <div class="ur-bottom">微信红包</div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img class="user-avatar" src="./img/page/dg_head.jpg" />
-                <div class="content-wrap">
-                    <div class="user-name">大安大厦</div>
-                    <div class="user-msg">来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来</div>
-                </div>
-            </li>
-            <li class="mine">
-                <img class="user-avatar" src="./img/page/dg_head.jpg" />
-                <div class="content-wrap">
-                    <div class="user-name">大安大厦</div>
-                    <div class="user-redpc js-open-redpc">
-                        <div class="ur-title">红包</div>
-                        <div class="ur-note">红包未领取</div>
-                        <div class="ur-bottom">微信红包</div>
-                    </div>
-                </div>
-            </li>
-            <li class="mine">
-                <img class="user-avatar" src="./img/page/dg_head.jpg" />
-                <div class="content-wrap">
-                    <div class="user-name">大安大厦</div>
-                    <div class="user-redpc done">
-                        <div class="ur-title">红包</div>
-                        <div class="ur-note">红包已领取</div>
-                        <div class="ur-bottom">微信红包</div>
-                    </div>
-                </div>
-            </li>
-            <li class="mine">
-                <img class="user-avatar" src="./img/page/dg_head.jpg" />
-                <div class="content-wrap">
-                    <div class="user-name">大安大厦</div>
-                    <div class="user-msg">来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来</div>
-                </div>
-            </li>
+        <ul class="room-main-list js-room-main-list hide">
+            
         </ul>
         <div class="bt-wrap">
             <img class="bt-dating" src="./img/page/bt_dating.png" />
@@ -83,8 +26,8 @@
             <img class="bt-tuichu" src="./img/page/bt_tuichu.png" />
         </div>
         <div class="msg-wrap">
-            <input class="main-input" type="text" placeholder="请输入消息" value="" />
-            <div class="emit-bt">发送</div>
+            <input class="main-input js-main-input" type="text" placeholder="请输入消息" value="" />
+            <div class="emit-bt js-emit-bt">发送</div>
         </div>
     </div>
     <!-- 房间金币总数 -->
@@ -116,53 +59,8 @@
     </div>
     <!-- toast end -->
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-    $(function(){
-        var app = {
-            buyNum: 1, /* 购买数量*/
-            init: function(){
-                this.bindEvent();
-            },
-            bindEvent: function(){
-                var self = this;
-                /** 返回大厅*/
-                $('.bt-dating').on('click', function(){
-
-                })
-                /** 加入房间*/
-                $('.bt-jiaru').on('click', function(){
-                    
-                })
-                /** 退出房间*/
-                $('.bt-tuichu').on('click', function(){
-                    
-                })
-                /** 领取红包*/
-                $('.js-open-redpc').on('click', function(){
-                    $('.js-redrp-open').removeClass('hide');
-                })
-                /** 确定领取红包*/
-                $('.toast-window-redpc').on('click', function(){
-                    $('.js-redrp-open').addClass('hide');
-                    $('.js-redpc-rs').removeClass('hide');
-                })
-                /** 通用弹窗关闭*/
-                $('.toast-window-mask').on('click', function(){
-                    $(this).parent('.toast-window').addClass('hide');
-                })
-                /** 通用弹窗关闭*/
-                $('.twn-t-close, .js-win-close').on('click', function(){
-                    $(this).parents('.toast-window').addClass('hide');
-                })
-                /** 红包结果关闭*/
-                $('.rrw-close').on('click', function(){
-                    $('.js-redpc-rs').addClass('hide');
-                })
-            }
-        }
-        app.init();
-    })
-    </script>
+    <script src="https://cdn.bootcss.com/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
+    <script src="./js/room.js"></script>
     
 </body>
 
