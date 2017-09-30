@@ -53,6 +53,19 @@
         top: rem(100);
         left: 50%;
         margin-left: rem(-318);
+        &.null{
+            background: url('../img/page/redpc_open_null.png') no-repeat;
+            background-size: 100%; 
+        }
+        .red-avatar{
+            position: absolute;
+            border-radius: 50%;
+            left: 50%;
+            width: rem(106);
+            height: rem(106);
+            top: rem(60);
+            margin-left: rem(-53);
+        }
         .red-name{
             position: absolute;
             left: 0;
@@ -365,6 +378,7 @@
         -webkit-overflow-scrolling: touch;
         overflow-y: auto;
         padding-bottom: rem(100);
+        
     }
     .bt-wrap{
         position: fixed;
@@ -416,6 +430,31 @@
             padding-left: rem(30);
             padding-right: rem(30);
             padding-top: rem(45);
+            &.ts{
+                text-align: center;
+                .ts-show{
+                    display: inline-block;
+                    font-size: rem(24);
+                    color: #FFF;
+                    background: #cecece;
+                    padding-left: rem(20);
+                    padding-right: rem(20);
+                    padding-top: rem(5);
+                    padding-bottom: rem(5);
+                    &::before{
+                        content: '';
+                        display: inline-block;
+                        width: rem(20);
+                        height: rem(23);
+                        background: url('../img/page/icon_redpc.png') no-repeat;
+                        background-size:100%; 
+                          
+                        vertical-align: middle;
+                        margin-right: rem(10);
+                    }
+                }
+                
+            }
             &.mine{
                 .user-avatar{
                     float: right;

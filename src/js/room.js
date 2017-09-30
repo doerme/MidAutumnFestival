@@ -24,9 +24,19 @@ $(function(){
         },
         talkUnitShow: function(jdata){
             var self = this;
-            $('.js-room-main-list').append(self.pageTpl.roomunit({
-                data: jdata[0]
-            }));
+            var delay = 0;
+            if(jdata && jdata[0].delay){
+                delay = jdata[0].delay * 1000;
+            }
+            console.log('delay', delay);
+            setTimeout(function(){
+                $('.js-room-main-list').append(self.pageTpl.roomunit({
+                    data: jdata[0]
+                }));
+                var h = document.documentElement.scrollHeight || document.body.scrollHeight;
+                $('.js-room-main-list').scrollTop(h);
+            }, delay);
+            
         },
         inRoom: function(){
             var self = this;
@@ -115,6 +125,27 @@ $(function(){
                 self.pageToast('退出房间失败');
             })
         },
+        /** 打开红包 */
+        openRedPc: function(hbid,avatar,usernick){
+            $('.js-redrp-open-avatar').attr({
+                src: avatar
+            })
+            $('.js-redrp-open-nickname').html(usernick);
+            $.ajax({
+                url: 'http://www.czcycm.com/app/hb/hb_info/' + hbid,
+                type: 'post',
+            }).done(function(jdata){
+                if(typeof(jdata) == 'string'){
+                    jdata = JSON.parse(jdata);
+                }
+                if(jdata.data.je == 0){
+                    //self.pageToast(jdata.data.msg);
+                    $('.toast-window-redpc').addClass('null');
+                }
+                $('.js-redrp-open-msg').html(jdata.data.msg);
+                $('.js-redrp-open').removeClass('hide');
+            })
+        },
         bindEvent: function(){
             var self = this;
             /** 发送消息 */
@@ -127,7 +158,7 @@ $(function(){
             })
             /** 加入房间*/
             $('.bt-jiaru').on('click', function(){
-                
+                self.inRoom();
             })
             
             /** 退出房间*/
@@ -155,6 +186,10 @@ $(function(){
             $('.rrw-close').on('click', function(){
                 $('.js-redpc-rs').addClass('hide');
             })
+            /** 开红包 */
+            $('.js-room-main-list').on('click', '.js-open-redpc', function(){
+                self.openRedPc($(this).data('id'),$(this).data('headimgurl'),$(this).data('nickname'));
+            });
         },
         pageToast: function(msg) {
             $('.main-toast-window').html(msg).removeClass('hide');
