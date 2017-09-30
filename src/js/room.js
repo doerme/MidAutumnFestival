@@ -56,13 +56,19 @@ $(function(){
                 if(typeof(jdata) == 'string'){
                     jdata = JSON.parse(jdata);
                 }
-                if(jdata.code == 1){
+                if(jdata.code == 1 && jdata.data.type==1){
                     $('.js-room-main-list').removeClass('hide');
                     self.getRoomMsg();
                 }else{
-                    if(confirm('加入房间失败，请重试')){
+                    self.pageToast('加入房间失败，请重试');
+                    self.roomTuichu();
+                    setTimeout(function(){
+
                         window.history.back(-1);
-                    }
+                    },2000);
+                    // if(confirm('加入房间失败，请重试')){
+                    //     window.history.back(-1);
+                    // }
                 }
                 console.log(jdata);
             })
