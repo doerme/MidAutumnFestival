@@ -8,7 +8,7 @@
 </li>
 {{else if data.type == 'hb'}}
 <li>
-    <img class="user-avatar" src="./img/page/dg_head.jpg" />
+    <img class="user-avatar" src="{{data.headimgurl}}" />
     <div class="content-wrap">
         <div class="user-name">大安大厦</div>
         <div class="user-redpc js-open-redpc" data-id="{{data.hb_id}}" data-headimgurl="{{data.headimgurl}}" data-nickname="{{data.nickname}}">

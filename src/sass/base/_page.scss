@@ -377,7 +377,7 @@
         height: 100%;
         -webkit-overflow-scrolling: touch;
         overflow-y: auto;
-        padding-bottom: rem(100);
+        padding-bottom: rem(200);
         
     }
     .bt-wrap{
@@ -448,8 +448,6 @@
                         height: rem(23);
                         background: url('../img/page/icon_redpc.png') no-repeat;
                         background-size:100%; 
-                          
-                        vertical-align: middle;
                         margin-right: rem(10);
                     }
                 }
@@ -549,14 +547,14 @@
         display: block;
         margin-top: rem(10);
         width: rem(401);
-        height: rem(144);
+        height: rem(146);
         background: url('../img/page/redpc_from_left.png') no-repeat;
         background-size: 100%;
         margin-left: rem(20);
         float: left;
         &.done{
             background: url('../img/page/redpc_from_left2.png') no-repeat;
-            background-size: 100%;
+            background-size: 100% auto;
         }
         .ur-title{
             position: absolute;
@@ -577,7 +575,7 @@
             font-size: rem(22);
             color: #ababab;
             left: rem(38);
-            top: rem(110);
+            top: rem(116);
         }
     }
 }

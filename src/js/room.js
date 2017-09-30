@@ -22,6 +22,11 @@ $(function(){
             }
             this.initSocket(option);
         },
+        scrollBottom: function(){
+            var h = $('.js-room-main-list')[0].scrollHeight || $('.js-room-main-list')[0].scrollHeight;
+            // $('body').scrollTop(h);
+            $('.js-room-main-list').scrollTop(h);
+        },
         talkUnitShow: function(jdata){
             var self = this;
             var delay = 0;
@@ -33,10 +38,11 @@ $(function(){
                 $('.js-room-main-list').append(self.pageTpl.roomunit({
                     data: jdata[0]
                 }));
-                var h = document.documentElement.scrollHeight || document.body.scrollHeight;
-                $('.js-room-main-list').scrollTop(h);
+                setTimeout(function(){
+                    self.scrollBottom();
+                },200);
+                self.scrollBottom();
             }, delay);
-            
         },
         inRoom: function(){
             var self = this;
@@ -100,7 +106,8 @@ $(function(){
                     jdata = JSON.parse(jdata);
                 }
                 if(jdata.code == 1){
-                    $('.js-main-input').val('')
+                    $('.js-main-input').val('');
+                    self.scrollBottom();
                 }else {
                     self.pageToast('消息发送失败请重试');
                 }
@@ -138,16 +145,30 @@ $(function(){
                 if(typeof(jdata) == 'string'){
                     jdata = JSON.parse(jdata);
                 }
+                $('.toast-window-redpc').removeClass('null');
                 if(jdata.data.je == 0){
                     //self.pageToast(jdata.data.msg);
                     $('.toast-window-redpc').addClass('null');
                 }
                 $('.js-redrp-open-msg').html(jdata.data.msg);
                 $('.js-redrp-open').removeClass('hide');
+
+                $('.js-flrp-avatar').attr({
+                    src: avatar
+                })
+                $('.js-flrp-name').html(usernick+'的红包');
+                $('.js-flrp-note').html(jdata.data.msg);
+                $('.js-flrp-money').html(jdata.data.je + '<span>元</span>');
             })
         },
         bindEvent: function(){
             var self = this;
+            $('.js-main-input').on('focus', function(){
+                setTimeout(function () {
+                    document.body.scrollTop = document.body.scrollHeight; 
+                    self.scrollBottom();
+                }, 500);
+            })
             /** 发送消息 */
             $('.js-emit-bt').on('click', function(){
                 self.sendIMMessage();
