@@ -17,26 +17,7 @@
 <body>
     <div class="roomlist-wrap">
         <img class="roomlist-banner" src="../img/page/dg_head.jpg" />
-        <ul class="roomlist-main">
-            <li>
-                <img class="rl-avatar" src="../img/page/dg_head.jpg" />
-                <div class="rl-name">七月</div>
-                <div class="rl-num">在线人数1931</div>
-                <a class="rl-in" href="javascript:;">进入</a>
-            </li>
-            <li>
-                <img class="rl-avatar" src="../img/page/dg_head.jpg" />
-                <div class="rl-name">七月</div>
-                <div class="rl-num">在线人数1931</div>
-                <a class="rl-in" href="javascript:;">进入</a>
-            </li>
-            <li>
-                <img class="rl-avatar" src="../img/page/dg_head.jpg" />
-                <div class="rl-name">七月</div>
-                <div class="rl-num">在线人数1931</div>
-                <a class="rl-in" href="javascript:;">进入</a>
-            </li>
-        </ul>
+        <ul class="roomlist-main js-roomlist-main"></ul>
         <div class="create-room-bt js-create-room-bt">创建房间</div>
     </div>
     
@@ -101,47 +82,7 @@
 
     <!-- 提示弹窗end -->
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script>    
-        $(function(){
-            var app = {
-                buyNum: 1, /* 购买数量*/
-                init: function(){
-                    this.bindEvent();
-                },
-                bindEvent: function(){
-                    var self = this;
-                    /**  创建房间弹窗*/
-                    $('.js-create-room-bt').on('click', function(){
-                        $('.js-create-room-window').removeClass('hide');
-                    })
-
-                    /** 创建房间类型选择*/
-                    $('.js-room-choose').on('click','.twn-choose', function(){
-                        $('.js-room-choose > .selected').removeClass('selected');
-                        $(this).addClass('selected')
-                    })
-
-                    /** 马上创建按钮点击*/
-                    $('.js-create-now').on('click', function(){
-                        $('.js-create-room-window').addClass('hide');
-                        $('.js-create-success').removeClass('hide'); // 创建成功
-                        $('.js-create-fail').removeClass('hide');   // 创建失败
-                    })
-
-                    /** 通用弹窗关闭*/
-                    $('.toast-window-mask').on('click', function(){
-                        $(this).parent('.toast-window').addClass('hide');
-                    })
-                    /** 通用弹窗关闭*/
-                    $('.twn-t-close, .js-win-close').on('click', function(){
-                        $(this).parents('.toast-window').addClass('hide');
-                    })
-                }
-            }
-            app.init();
-        })
-    </script>
-    
+    <script src="./js/room.js"></script>
 </body>
 
 </html>
