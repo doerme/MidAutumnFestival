@@ -9,6 +9,44 @@
     top:0;
     width: 100%;
     height: 100%;
+    .toast-window-redpc{
+        position: absolute;
+        width: rem(635);
+        height: rem(808);
+        background: url('../img/page/redpc_open.png') no-repeat;
+        background-size: 100%;
+        top: rem(100);
+        left: 50%;
+        margin-left: rem(-318);
+        .red-name{
+            position: absolute;
+            left: 0;
+            top: rem(170);
+            width: 100%;
+            text-align: center;
+            font-size: rem(32);
+            color: #fdd6aa;
+        }
+        .red-tips1{
+            position: absolute;
+            left: 0;
+            top: rem(220);
+            width: 100%;
+            text-align: center;
+            font-size: rem(24);
+            color: #edc290;
+        }
+        .red-tips2{
+            position: absolute;
+            left: 0;
+            top: rem(300);
+            width: 100%;
+            text-align: center;
+            font-size: rem(42);
+            color: #fdd6aa;
+            font-weight: bold;
+        }
+    }
     .toast-window-mask{
         position: absolute;
         width: 100%;
@@ -170,6 +208,74 @@
         }
     }
 }
+.redpc-result-wrap{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #FFF url('../img/page/redpc_top.png') no-repeat center rem(-100);
+    background-size: 100% auto;
+    .rrw-close{
+        position: absolute;
+        left: rem(26);
+        top: rem(26);
+        font-size: rem(26);
+        color: #fedd00;
+    }
+    .rrw-avatar{
+        position: absolute;
+        width: rem(145);
+        height: rem(145);
+        left: 50%;
+        margin-left: rem(-72);
+        top: rem(115);
+        border-radius: 50%;
+    }
+    .rrw-name{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: rem(600);
+        text-align: center;
+        font-size: rem(28);
+        color: #333;
+        top: rem(290);
+    }
+    .rrw-note{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: rem(600);
+        text-align: center;
+        font-size: rem(28);
+        color: #333;
+        top: rem(346);
+    }
+    .rrw-money{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: rem(600);
+        text-align: center;
+        font-size: rem(100);
+        color: #333;
+        font-weight: bold;
+        top: rem(450);
+        span{
+            font-size: rem(28);
+        }
+    }
+    .rrw-tips{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: rem(600);
+        text-align: center;
+        font-size: rem(26);
+        color: #577ea1;
+    }
+}
 .tips-wrap{
     position: absolute;
     width: 100%;
@@ -215,9 +321,59 @@
     height: 100%;
     left: 0;
     top: 0;
-    -webkit-overflow-scrolling: touch;
-    overflow-y: auto;
+    
     background: #f9f9f8;
+    .room-main-list{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+        padding-bottom: rem(100);
+    }
+    .bt-wrap{
+        position: fixed;
+        bottom: rem(130);
+        right: rem(26);
+        width: rem(150);
+        height: rem(300);
+        img{
+            width: rem(150);
+            margin-bottom: rem(25);
+        }
+    }
+    .msg-wrap{
+        position: fixed;
+        border-top: rem(2) solid #dedede;
+        height: rem(98);
+        line-height: rem(98);
+        font-size: rem(28);
+        color: #b9b9b9;
+        text-indent: rem(40);
+        width: 100%;
+        background: #FFF;
+        left: 0;
+        bottom: 0;
+        .emit-bt{
+            position: absolute;
+            width: rem(150);
+            height: rem(72);
+            text-align: center;
+            line-height: rem(72);
+            top: rem(14);
+            right: rem(30);
+            border-radius: rem(20);
+            background: #fedd00;
+            font-size: rem(30);
+            color: #2f2b0e;
+            text-indent: 0;
+        }
+        .main-input{
+            border:none;
+            outline: none;
+            width: rem(530);
+        }
+    }
     .room-main-list{
         li{
             overflow: hidden;
