@@ -37,6 +37,13 @@
     text-align: left;
 }
 
+@mixin textoverflow{
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* @name: 强制不换行 */
 @mixin nowrap{
     white-space: nowrap;

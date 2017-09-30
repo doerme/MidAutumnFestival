@@ -68,7 +68,7 @@
             height: rem(78);
             line-height: rem(78);
             text-align: center;
-            border-bottom: rem(3) solid #d3d1d1;
+            border-bottom: rem(2) solid #d3d1d1;
             font-size: rem(32);
             color: #333;
             .twn-t-close{
@@ -109,7 +109,7 @@
                     text-align: center;
                     font-size: rem(36);
                     color: #666;
-                    border: rem(3) solid #d3d1d1;
+                    border: rem(2) solid #d3d1d1;
                     border-radius: rem(20);
                     line-height: rem(80);
                     &:nth-child(1){
@@ -159,7 +159,7 @@
     left: 0;
     bottom: 0;
     height: rem(100);
-    border-top: rem(3) solid #d3d1d1;
+    border-top: rem(2) solid #d3d1d1;
     background: #FFF;
     li{
         width: 25%;
@@ -602,7 +602,7 @@
             margin-right: rem(30);
             height: rem(120);
             line-height: rem(120);
-            border-bottom: rem(3) solid #cccccc;
+            border-bottom: rem(2) solid #cccccc;
             .fans-avatar{
                 position: absolute;
                 width: rem(80);
@@ -614,11 +614,12 @@
             }
             .fans-name{
                 position: absolute;
-                width: rem(440);
+                width: rem(430);
                 font-size: rem(32);
                 color: #333;
                 left: rem(150);
                 top: 0;
+                @include textoverflow;
             }
             .fan-local{
                 position: absolute;
@@ -695,7 +696,7 @@
         top: rem(325);
         right: rem(30);
         background: #f7f7f7;
-        border: rem(3) solid #cccccc;
+        border: rem(2) solid #cccccc;
         border-radius: rem(20);
         text-align: center;
         line-height: rem(90);
@@ -716,7 +717,7 @@
             line-height: rem(100);
             margin-left: rem(30);
             margin-right: rem(30);
-            border-bottom: rem(3) solid #cccccc;
+            border-bottom: rem(2) solid #cccccc;
             &:last-child{
                 border-bottom: none;
             }
@@ -755,7 +756,7 @@
             line-height: rem(120);
             margin-left: rem(30);
             margin-right: rem(30);
-            border-bottom: rem(3) solid #cccccc;
+            border-bottom: rem(2) solid #cccccc;
             &:last-child{
                 border-bottom: none;
             }
@@ -801,19 +802,18 @@
             .col4{
                 display: inline-block;
                 width: rem(120);
-                height: rem(52);
                 text-align: center;
                 line-height: rem(52);
                 font-size: rem(24);
                 &.done{
                     font-size: rem(22);
                     color: #23b03d;
-                    border: rem(3) solid #23b03d;
+                    border: rem(2) solid #23b03d;
                 }
                 &.wait{ 
                     font-size: rem(22);
                     color: #2f2b0e;
-                    border: rem(3) solid #2f2b0e;
+                    border: rem(2) solid #2f2b0e;
                 }
             }
         }
@@ -844,7 +844,7 @@
         margin-left: rem(-52);
         top: rem(70);
         border-radius: 50%;
-        border: rem(3) solid #fedd00;
+        border: rem(2) solid #fedd00;
     }
     .user-name{
         position: absolute;
@@ -859,7 +859,7 @@
         position: absolute;
         width: rem(455);
         height: rem(455);
-        border: rem(3) solid #fedd00;
+        border: rem(2) solid #fedd00;
         left: 50%;
         margin-left: rem(-228);
         top: rem(290);

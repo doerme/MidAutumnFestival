@@ -19,9 +19,93 @@
         <ul class="room-main-list">
             <li>
                 <img class="user-avatar" src="./img/page/dg_head.jpg" />
+                <div class="content-wrap">
+                    <div class="user-name">大安大厦</div>
+                    <div class="user-redpc js-open-redpc">
+                        <div class="ur-title">红包</div>
+                        <div class="ur-note">红包未领取</div>
+                        <div class="ur-bottom">微信红包</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <img class="user-avatar" src="./img/page/dg_head.jpg" />
+                <div class="content-wrap">
+                    <div class="user-name">大安大厦</div>
+                    <div class="user-redpc done">
+                        <div class="ur-title">红包</div>
+                        <div class="ur-note">红包已领取</div>
+                        <div class="ur-bottom">微信红包</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <img class="user-avatar" src="./img/page/dg_head.jpg" />
+                <div class="content-wrap">
+                    <div class="user-name">大安大厦</div>
+                    <div class="user-msg">来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来</div>
+                </div>
+            </li>
+            <li class="mine">
+                <img class="user-avatar" src="./img/page/dg_head.jpg" />
+                <div class="content-wrap">
+                    <div class="user-name">大安大厦</div>
+                    <div class="user-redpc js-open-redpc">
+                        <div class="ur-title">红包</div>
+                        <div class="ur-note">红包未领取</div>
+                        <div class="ur-bottom">微信红包</div>
+                    </div>
+                </div>
+            </li>
+            <li class="mine">
+                <img class="user-avatar" src="./img/page/dg_head.jpg" />
+                <div class="content-wrap">
+                    <div class="user-name">大安大厦</div>
+                    <div class="user-redpc done">
+                        <div class="ur-title">红包</div>
+                        <div class="ur-note">红包已领取</div>
+                        <div class="ur-bottom">微信红包</div>
+                    </div>
+                </div>
+            </li>
+            <li class="mine">
+                <img class="user-avatar" src="./img/page/dg_head.jpg" />
+                <div class="content-wrap">
+                    <div class="user-name">大安大厦</div>
+                    <div class="user-msg">来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来</div>
+                </div>
             </li>
         </ul>
+        <div class="bt-wrap">
+            <img class="bt-dating" src="./img/page/bt_dating.png" />
+            <img class="bt-jiaru" src="./img/page/bt_jiaru.png" />
+            <img class="bt-tuichu" src="./img/page/bt_tuichu.png" />
+        </div>
+        <div class="msg-wrap">
+            <input class="main-input" type="text" placeholder="请输入消息" value="" />
+            <div class="emit-bt">发送</div>
+        </div>
     </div>
+    <!-- 红包弹窗 -->
+    <div class="toast-window js-redrp-open hide">
+        <div class="toast-window-mask"></div>
+        <div class="toast-window-redpc">
+            <div class="red-name">手机宽</div>
+            <div class="red-tips1">给你发了一个红包</div>
+            <div class="red-tips2">恭喜发财，大吉大利</div>
+        </div>
+    </div>
+    <!-- 红包弹窗end -->
+    <!-- 红包结果 -->
+    <div class="redpc-result-wrap js-redpc-rs hide">
+        <div class="rrw-close">关闭</div>
+        <img class="rrw-avatar" src="./img/page/dg_head.jpg" />
+        <div class="rrw-name">谢洛克的红包</div>
+        <div class="rrw-note">恭喜发财，大吉大利</div>
+        <div class="rrw-money">6.00<span>元</span></div>
+        <div class="rrw-tips">已存入钱包，可直接消费</div>
+    </div>
+    <!-- 红包结果end -->
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script>    
         $(function(){
@@ -32,6 +116,27 @@
                 },
                 bindEvent: function(){
                     var self = this;
+                    /** 领取红包*/
+                    $('.js-open-redpc').on('click', function(){
+                        $('.js-redrp-open').removeClass('hide');
+                    })
+                    /** 确定领取红包*/
+                    $('.toast-window-redpc').on('click', function(){
+                        $('.js-redrp-open').addClass('hide');
+                        $('.js-redpc-rs').removeClass('hide');
+                    })
+                    /** 通用弹窗关闭*/
+                    $('.toast-window-mask').on('click', function(){
+                        $(this).parent('.toast-window').addClass('hide');
+                    })
+                    /** 通用弹窗关闭*/
+                    $('.twn-t-close, .js-win-close').on('click', function(){
+                        $(this).parents('.toast-window').addClass('hide');
+                    })
+                    /** 红包结果关闭*/
+                    $('.rrw-close').on('click', function(){
+                        $('.js-redpc-rs').addClass('hide');
+                    })
                     
                 }
             }
