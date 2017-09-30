@@ -61,7 +61,12 @@ $(function(){
                     jdata = JSON.parse(jdata);
                 }
                 if(jdata.code == 1){
-                    
+                    $('.js-room-total-num').html(jdata.data.je);
+                    if(jdata.data.is_inroom == 1){
+                        $('.bt-tuichu').removeClass('hide');
+                    }else {
+                        $('.bt-jiaru').removeClass('hide'); 
+                    }
                 }else{
                     self.pageToast('获取个人信息失败');   
                 }
