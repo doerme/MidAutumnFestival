@@ -122,11 +122,11 @@ $(function(){
                         self.pageToast(jdata.data.msg);
                         setTimeout(function(){
                             if(jdata.data.type == 5){
-                                Window.location.href = '//www.czcycm.com/app/wallet/index';
+                                window.location.href = '//www.czcycm.com/app/wallet/index';
                             }else{
                                 window.location.href='/';
                             }
-                        },2000);
+                        },2800);
                     }
                    
                 }else{
