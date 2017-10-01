@@ -24,3 +24,9 @@ ws://ws.czcycm.com:9588
 
 如果type是hb 会有一个hb_id
 ```
+
+# FTP地址
+```
+/public/mex/mid
+/public/application/views/wallet
+```

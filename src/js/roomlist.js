@@ -7,6 +7,7 @@ $(function(){
         init: function(){
             this.bindEvent();
             this.getRoomList();
+            this.getAgentStatus();
         },
         getRoomList: function(){
             var self = this;
@@ -23,9 +24,54 @@ $(function(){
                 }))
             })
         },
+        getAgentStatus: function () {
+            var self = this;
+            $.ajax({
+                url:'http://www.czcycm.com/app/wallet/is_vip',
+                type: 'get'
+            }).done(function(jdata){
+                console.log(jdata);
+                if (jdata.code == 0) {
+                    if (jdata.data.is_vip == 1) {
+                        $('.roomlist-banner').attr({
+                            src: 'http://www.czcycm.com/mex/mid/img/page/agent.png',
+                            isvip: '1'
+                        });
+                    } else {
+                        $('.roomlist-banner').attr({
+                            src: 'http://www.czcycm.com//mex/mid/img/page/be-agent.png',
+                            isvip: '0'
+                        });
+                    }
+                }
+                // if(typeof(jdata) == 'string'){
+                //     jdata = JSON.parse(jdata);
+                // }
+            })
+        },
+        payCard: function () {
+            var self = this;
+            $.ajax({
+                url:'http://www.czcycm.com/app/wallet/cardPay',
+                type: 'get'
+            }).done(function(jdata){
+                console.log(jdata);
+                if (jdata.code == 0) {
+                    window.location.href = jdata.data.pay_url;
+                }
+            })
+        },
         bindEvent: function(){
             var self = this;
             var createRoomType = 1;
+            // 代理
+            $('.roomlist-banner').on('click', function () {
+                if($(this).attr('isvip') == '1'){
+                    window.location.href = '/app/wallet/index';
+                }else{
+                    self.payCard();
+                }
+            });
             /**  创建房间弹窗*/
             $('.js-create-room-bt').on('click', function(){
                 $('.js-create-room-window').removeClass('hide');

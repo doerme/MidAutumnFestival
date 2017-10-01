@@ -4,23 +4,73 @@ $(function(){
             roomunit: require('../js/tpl/roomunit.tpl')
         },
         buyNum: 1, /* 购买数量*/
+        titlenm:'',
+        getRedpocket: null,
         init: function(){
-            var self = this;
-            self.bindEvent();
-            self.inRoom();
-            var option = {
-                url: 'ws://ws.czcycm.com:9588',
-                callback: function(jdata){
-                    if(typeof(jdata) == 'string'){
-                        jdata = JSON.parse(jdata);
+            if(window.location.href.match(/roomid=(\d+)/) == null){
+                console.log('没有房间号');
+                window.location.href = '/';
+                return;
+            }else{
+                var self = this;
+                self.bindEvent();
+                self.inRoom();
+                self.sharecode();
+                var option = {
+                    url: 'ws://ws.czcycm.com:9588',
+                    callback: function(jdata){
+                        if(typeof(jdata) == 'string'){
+                            jdata = JSON.parse(jdata);
+                        }
+                        if(jdata.data && jdata.data[0]){
+                            self.talkUnitShow(jdata.data);
+                        }
+                        console.log('ws cb', jdata);
                     }
-                    if(jdata.data && jdata.data[0]){
-                        self.talkUnitShow(jdata.data);
-                    }
-                    console.log('ws cb', jdata);
                 }
+                this.initSocket(option);
             }
-            this.initSocket(option);
+            
+        },
+        sharecode: function () {
+            console.log("aaaa");
+            var self = this;
+            var shareUrl = 'http://www.czcycm.com/app/wallet/room?roomid=' + window.location.href.match(/roomid=(\d+)/)[1],
+                imgUrl = 'http://www.czcycm.com/mex/mid/img/page/WechatIMG2.png',
+                title = self.titlenm +'给你送了6.66元的现金红包';
+                desc = "可以立即提现哦";
+            var url = window.location.href;
+            $.ajax({
+                type: 'POST',
+                url: 'http://www.czcycm.com/common/jsapi',
+                dataType: 'json',
+                data: {
+                    url: url
+                },
+                success: function (res) {
+                    console.log("tttttt"+res.appId);
+                    wx.config({
+                        debug: false,
+                        appId: res.appId,
+                        timestamp: res.timestamp,
+                        nonceStr: res.nonceStr,
+                        signature: res.signature,
+                        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+                    })
+                    wx.ready(function () {
+                        wx.onMenuShareTimeline({
+                            link: shareUrl,
+                            imgUrl: imgUrl
+                        });
+                        wx.onMenuShareAppMessage({
+                            title:title,
+                            desc: desc,
+                            link: shareUrl,
+                            imgUrl: imgUrl
+                        });
+                    })
+                }
+            });
         },
         scrollBottom: function(){
             var h = $('.js-room-main-list')[0].scrollHeight || $('.js-room-main-list')[0].scrollHeight;
@@ -29,20 +79,18 @@ $(function(){
         },
         talkUnitShow: function(jdata){
             var self = this;
-            var delay = 0;
-            if(jdata && jdata[0].delay){
-                delay = jdata[0].delay * 1000;
-            }
-            console.log('delay', delay);
-            setTimeout(function(){
+            var msg = jdata[0];
+            //self.getRoomMsg();
+            setTimeout(function () {
                 $('.js-room-main-list').append(self.pageTpl.roomunit({
-                    data: jdata[0]
+                    data: msg
                 }));
                 setTimeout(function(){
                     self.scrollBottom();
                 },200);
                 self.scrollBottom();
-            }, delay);
+                self.getRoomMsg();
+            }, Number(msg.delay) * 1000)
         },
         inRoom: function(){
             var self = this;
@@ -56,18 +104,36 @@ $(function(){
                 if(typeof(jdata) == 'string'){
                     jdata = JSON.parse(jdata);
                 }
-                if(jdata.code == 1 && jdata.data.type==1){
-                    $('.js-room-main-list').removeClass('hide');
-                    self.getRoomMsg();
-                }else{
-                    self.pageToast('加入房间失败，请重试');
-                    self.roomTuichu();
-                    setTimeout(function(){
+                if(jdata.code == 1){
+                    if (jdata.data.type == 1) {
+                        $('.js-room-main-list').removeClass('hide');
+                        $('.bt-tuichu').show();
+                        $('.bt-jiaru').hide();
+                        self.getRoomMsg();
 
-                        window.history.back(-1);
-                    },2000);
+                        $.ajax({
+                            url: 'http://www.czcycm.com/app/hb/send_text',
+                            type: 'post',
+                            data: {
+                                text: "大家好，我来了"
+                            }
+                        });
+                    } else {
+                        self.pageToast(jdata.data.msg);
+                        setTimeout(function(){
+                            if(jdata.data.type == 5){
+                                Window.location.href = '//www.czcycm.com/app/wallet/index';
+                            }else{
+                                window.location.href='/';
+                            }
+                        },2000);
+                    }
+                   
+                }else{
+                    $('.bt-tuichu').hide();
+                    $('.bt-jiaru').show();
                     // if(confirm('加入房间失败，请重试')){
-                    //     window.history.back(-1);
+                    //     window.location.href='/';
                     // }
                 }
                 console.log(jdata);
@@ -77,13 +143,18 @@ $(function(){
             var self = this;
             $.ajax({
                 url: 'http://www.czcycm.com/app/hb/my_info',
-                type: 'post'
+                type: 'post',
+                data: {
+                    room_id: window.location.href.match(/roomid=(\d+)/)[1]
+                }
             }).done(function(jdata){
                 if(typeof(jdata) == 'string'){
                     jdata = JSON.parse(jdata);
                 }
                 if(jdata.code == 1){
-                    $('.js-room-total-num').html(jdata.data.je);
+                    $('.room-total-num').html(jdata.data.je);       
+                    document.title = jdata.data.room_name;
+                    self.titlenm  = jdata.data.room_name;
                     if(jdata.data.is_inroom == 1){
                         $('.bt-tuichu').removeClass('hide');
                     }else {
@@ -119,6 +190,32 @@ $(function(){
                 }
             })
         },
+        openRedpocket: function (redpocketId) {
+            var self = this;
+            $.ajax({
+                url: 'http://www.czcycm.com/app/hb/hb_info/' + redpocketId,
+                type: 'get'
+            }).done(function(jdata){
+                if(typeof(jdata) == 'string'){
+                    jdata = JSON.parse(jdata);
+                    console.log(jdata);
+                    if (jdata.data.je == 0) {
+                        // 空的了
+                        $('.js-no-redpocket .red-name').html(jdata.data.nickname);
+                        $('.js-no-redpocket img').attr('src', jdata.data.headimgurl); 
+                        $('.js-no-redpocket').removeClass('hide');
+                    } else {
+                        self.getRedpocket = jdata.data;
+                        $('.js-redrp-open .red-name').html(jdata.data.nickname);
+                        $('.js-redrp-open img').attr('src', jdata.data.headimgurl); 
+                        $('.js-redrp-open').removeClass('hide');
+                    }
+                }
+            }).fail(function(jdata){
+                console.log('err: ', jdata);
+                // self.pageToast('退出房间失败');
+            })
+        },
         /** 退出房间 */
         roomTuichu: function(){
             var self = this;
@@ -130,41 +227,12 @@ $(function(){
                     jdata = JSON.parse(jdata);
                 }
                 if(jdata.code == 1){
-                    window.history.back(-1);
+                    window.location.href='/';
                 }else{
                     self.pageToast('退出房间失败');
                 }
             }).fail(function(jdata){
                 self.pageToast('退出房间失败');
-            })
-        },
-        /** 打开红包 */
-        openRedPc: function(hbid,avatar,usernick){
-            $('.js-redrp-open-avatar').attr({
-                src: avatar
-            })
-            $('.js-redrp-open-nickname').html(usernick);
-            $.ajax({
-                url: 'http://www.czcycm.com/app/hb/hb_info/' + hbid,
-                type: 'post',
-            }).done(function(jdata){
-                if(typeof(jdata) == 'string'){
-                    jdata = JSON.parse(jdata);
-                }
-                $('.toast-window-redpc').removeClass('null');
-                if(jdata.data.je == 0){
-                    //self.pageToast(jdata.data.msg);
-                    $('.toast-window-redpc').addClass('null');
-                }
-                $('.js-redrp-open-msg').html(jdata.data.msg);
-                $('.js-redrp-open').removeClass('hide');
-
-                $('.js-flrp-avatar').attr({
-                    src: avatar
-                })
-                $('.js-flrp-name').html(usernick+'的红包');
-                $('.js-flrp-note').html(jdata.data.msg);
-                $('.js-flrp-money').html(jdata.data.je + '<span>元</span>');
             })
         },
         bindEvent: function(){
@@ -181,7 +249,8 @@ $(function(){
             })
             /** 返回大厅*/
             $('.bt-dating').on('click', function(){
-                window.history.back(-1);
+                // window.location.href='/';
+                window.location.href = 'http://www.czcycm.com/app/wallet/roomlist';
             })
             /** 加入房间*/
             $('.bt-jiaru').on('click', function(){
@@ -192,17 +261,26 @@ $(function(){
             $('.bt-tuichu').on('click', function(){
                 self.roomTuichu();
             })
-            /** 领取红包*/
-            $('.js-open-redpc').on('click', function(){
-                $('.js-redrp-open').removeClass('hide');
-            })
+            // /** 领取红包*/
+            $('.js-room-main-list').on('click', '.js-redpocket-item', function () {
+                var hbId = $(this).data('id');
+                self.openRedpocket(hbId);
+            });
+            // $('.js-open-redpc').on('click', function(){
+            //     console.log('----');
+            //     $('.js-redrp-open').removeClass('hide');
+            // })
             /** 确定领取红包*/
-            $('.toast-window-redpc').on('click', function(){
+            $('.js-redrp-open .toast-window-redpc').on('click', function(){
                 $('.js-redrp-open').addClass('hide');
+                $('.js-redpc-rs .rrw-avatar').attr('src', self.getRedpocket.headimgurl);
+                $('.js-redpc-rs .rrw-name').html(self.getRedpocket.nickname + '的红包');
+                $('.js-redpc-rs .rrw-money').text(self.getRedpocket.je);
                 $('.js-redpc-rs').removeClass('hide');
             })
             /** 通用弹窗关闭*/
             $('.toast-window-mask').on('click', function(){
+                self.getRedpocket = null;
                 $(this).parent('.toast-window').addClass('hide');
             })
             /** 通用弹窗关闭*/
@@ -211,12 +289,9 @@ $(function(){
             })
             /** 红包结果关闭*/
             $('.rrw-close').on('click', function(){
+                self.getRedpocket = null;
                 $('.js-redpc-rs').addClass('hide');
             })
-            /** 开红包 */
-            $('.js-room-main-list').on('click', '.js-open-redpc', function(){
-                self.openRedPc($(this).data('id'),$(this).data('headimgurl'),$(this).data('nickname'));
-            });
         },
         pageToast: function(msg) {
             $('.main-toast-window').html(msg).removeClass('hide');

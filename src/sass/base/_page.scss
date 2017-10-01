@@ -32,7 +32,7 @@
     background: #FFF;
     border: rem(2) solid #CCC;
     text-align: center;
-    font-size: rem(24);
+    font-size: rem(28);
     color: #333;
     left: 10%;
     top: 40%;
@@ -53,18 +53,12 @@
         top: rem(100);
         left: 50%;
         margin-left: rem(-318);
-        &.null{
-            background: url('../img/page/redpc_open_null.png') no-repeat;
-            background-size: 100%; 
-        }
-        .red-avatar{
-            position: absolute;
+        .red-avatar {
+            display: block;
+            width: rem(100);
+            height: rem(100);
             border-radius: 50%;
-            left: 50%;
-            width: rem(106);
-            height: rem(106);
-            top: rem(60);
-            margin-left: rem(-53);
+            margin: rem(40) auto 0;
         }
         .red-name{
             position: absolute;
@@ -94,6 +88,10 @@
             color: #fdd6aa;
             font-weight: bold;
         }
+    }
+    .toast-window-noredpc {
+        background: url('../img/page/no-hb-bg.png') no-repeat;
+        background-size: 100%;
     }
     .toast-window-mask{
         position: absolute;
@@ -377,8 +375,7 @@
         height: 100%;
         -webkit-overflow-scrolling: touch;
         overflow-y: auto;
-        padding-bottom: rem(200);
-        
+        padding-bottom: rem(100);
     }
     .bt-wrap{
         position: fixed;
@@ -423,6 +420,31 @@
             width: rem(530);
         }
     }
+    .little-redpocket {
+        text-align: center;
+        p {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: rem(6);
+            color: #fff;
+            font-size: rem(24);
+            padding: rem(6) 0;
+            padding-left: rem(60);
+            padding-right: rem(30);
+            line-height: rem(30);
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                left: rem(30);
+                display: inline-block;
+                width: rem(20);
+                height: rem(30);
+                background: url('../img/page/little-redpocket.png') no-repeat center;
+                background-size: cover;
+            }
+        }
+    }
     .room-main-list{
         li{
             overflow: hidden;
@@ -451,7 +473,6 @@
                         margin-right: rem(10);
                     }
                 }
-                
             }
             &.mine{
                 .user-avatar{
@@ -547,14 +568,14 @@
         display: block;
         margin-top: rem(10);
         width: rem(401);
-        height: rem(146);
+        height: rem(144);
         background: url('../img/page/redpc_from_left.png') no-repeat;
         background-size: 100%;
         margin-left: rem(20);
         float: left;
         &.done{
             background: url('../img/page/redpc_from_left2.png') no-repeat;
-            background-size: 100% auto;
+            background-size: 100%;
         }
         .ur-title{
             position: absolute;
@@ -590,7 +611,7 @@
     background: #f9f9f8;
     .roomlist-banner{
         width: 100%;
-        height: rem(155);
+        height: rem(280);
     }
     .create-room-bt{
         width: rem(200);
@@ -618,6 +639,28 @@
             border-radius: rem(20);
             background: #FFF;
             margin-top: rem(20);
+            &.ts{
+                text-align: center;
+                .ts-show{
+                    display: inline-block;
+                    font-size: rem(24);
+                    color: #FFF;
+                    background: #cecece;
+                    padding-left: rem(20);
+                    padding-right: rem(20);
+                    padding-top: rem(5);
+                    padding-bottom: rem(5);
+                    &::before{
+                        content: '';
+                        display: inline-block;
+                        width: rem(20);
+                        height: rem(23);
+                        background: url('../img/page/icon_redpc.png') no-repeat;
+                        background-size:100%; 
+                        margin-right: rem(10);
+                    }
+                }
+            }
             .rl-avatar{
                 position: absolute;
                 width: rem(95);
