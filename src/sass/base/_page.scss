@@ -27,14 +27,15 @@
 }
 .main-toast-window{
     position: fixed;
-    width: 74%;
-    padding: 3%;
+    width: 92%;
+    padding-top: 3%;
+    padding-bottom: 3%;
     background: #000;
     border: rem(2) solid #000;
     text-align: center;
-    font-size: rem(28);
+    font-size: rem(33);
     color: #FFF;
-    left: 10%;
+    left: 4%;
     top: 40%;
     line-height: rem(40);
 }
@@ -840,14 +841,15 @@
                 display: inline-block;
                 font-size: rem(32);
                 color: #333;
-                width: rem(500);
+                width: rem(480);
             }
             .col2{
                 display: inline-block;
                 font-size: rem(32);
                 color: #333;
-                width: rem(90);
+                width: rem(100);
                 text-align: right;
+                padding-right: rem(10); 
             }
             .col3{
                 display: inline-block;
@@ -878,7 +880,7 @@
             .col1-wrap{
                 display: inline-block;
                 position: relative;
-                width: rem(450);
+                width: rem(440);
                 vertical-align: middle;
                 .col1-top{
                     display: block;
@@ -902,6 +904,7 @@
                 width: rem(90);
                 text-align: right;
                 vertical-align: middle;
+                padding-right: rem(10);
             }
             .col3{
                 display: inline-block;

@@ -5,6 +5,8 @@ $(function(){
         },
         buyNum: 1, /* 购买数量*/
         titlenm:'',
+        mid: null, /** 当前房间mid */
+        hadws: false,
         getRedpocket: null,
         init: function(){
             if(window.location.href.match(/roomid=(\d+)/) == null){
@@ -16,21 +18,28 @@ $(function(){
                 self.bindEvent();
                 self.inRoom();
                 self.sharecode();
-                var option = {
-                    url: 'ws://ws.czcycm.com:9588',
-                    callback: function(jdata){
-                        if(typeof(jdata) == 'string'){
-                            jdata = JSON.parse(jdata);
-                        }
-                        if(jdata.data && jdata.data[0]){
-                            self.talkUnitShow(jdata.data);
-                        }
-                        console.log('ws cb', jdata);
-                    }
-                }
-                this.initSocket(option);
             }
-            
+        },
+        beginWS: function(){
+            var self = this;
+            if(self.hadws){
+                return;
+            }
+            self.hadws = true;
+            self.wsmid = self.mid;
+            var option = {
+                url: 'ws://ws.czcycm.com:9588',
+                callback: function(jdata){
+                    if(typeof(jdata) == 'string'){
+                        jdata = JSON.parse(jdata);
+                    }
+                    if(jdata.data && jdata.data[0]){
+                        self.talkUnitShow(jdata.data);
+                    }
+                    console.log('ws cb', jdata);
+                }
+            }
+            self.initSocket(option);
         },
         sharecode: function () {
             console.log("aaaa");
@@ -122,16 +131,19 @@ $(function(){
                         self.pageToast(jdata.data.msg);
                         setTimeout(function(){
                             if(jdata.data.type == 5){
-                                window.location.href = '//www.czcycm.com/app/wallet/index';
+                                //window.location.href = '//www.czcycm.com/app/wallet/index';
                             }else{
-                                window.location.href='/';
+                                //window.location.href='/';
+                            }
+                            if(jdata.data.type == 3){
+                                $('.bt-tuichu').removeClass('hide');
                             }
                         },2800);
                     }
                    
                 }else{
-                    $('.bt-tuichu').hide();
-                    $('.bt-jiaru').show();
+                    $('.bt-tuichu').addClass('hide');
+                    $('.bt-jiaru').removeClass('hide');
                     // if(confirm('加入房间失败，请重试')){
                     //     window.location.href='/';
                     // }
@@ -152,7 +164,10 @@ $(function(){
                     jdata = JSON.parse(jdata);
                 }
                 if(jdata.code == 1){
-                    $('.room-total-num').html(jdata.data.je);       
+                    $('.room-total-num').html(jdata.data.je);
+                    self.mid = jdata.data.mid;
+                    self.beginWS();
+
                     document.title = jdata.data.room_name;
                     self.titlenm  = jdata.data.room_name;
                     if(jdata.data.is_inroom == 1){
@@ -297,9 +312,10 @@ $(function(){
             $('.main-toast-window').html(msg).removeClass('hide');
             setTimeout(function(){
                 $('.main-toast-window').addClass('hide');
-            },1800);
+            },2800);
         },
         initSocket: function(option) {
+            var self = this;
             //服务器地址
             var locate = window.location;
             var url = option.url ? option.url : "ws://" + locate.hostname + ":" + locate.port + _get_basepath() + "/websocket";
@@ -323,7 +339,8 @@ $(function(){
                 console.log("onopen");
                 var param = {
                     cmd: 'login',
-                    gid: window.location.href.match(/roomid=(\d+)/)[1]
+                    gid: window.location.href.match(/roomid=(\d+)/)[1],
+                    mid: self.mid
                 }
                 websocket.send(JSON.stringify(param));
             }

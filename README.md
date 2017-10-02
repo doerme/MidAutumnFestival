@@ -13,6 +13,10 @@
 获取红包消息：http://www.czcycm.com/app/hb/hb_info 点红包的时候触发 获取我是否抢到了红包 抢到了多少钱
 
 接受ws信息：headimgurl（头像） nickname（昵称） type（类型：text文本，hb（红包），ts（抢到红包的提示）） delay（延迟多少秒显示）
+
+
+http://www.czcycm.com/app/hb/is_hb
+是否显示启动红包
 ```
 
 # websocket 协议说明

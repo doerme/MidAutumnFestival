@@ -32,7 +32,7 @@
 
     <!-- 提示弹窗 -->
     <!-- 创建房间选择 -->
-    <div class="toast-window js-create-room-window hide">
+    <div class="toast-window js-create-room-window-notused hide">
         <div class="toast-window-mask"></div>
         <div class="toast-window-main">
             <div class="twm-title">
@@ -40,13 +40,13 @@
                 创建房间
             </div>
             <div class="twm-main">
-                <div class="twn-m-body js-room-choose">
-                    <div data-type="1" class="twn-choose selected">自动抢红包</div>
-                    <div data-type="2" class="twn-choose">手动抢红包</div>
+                <div class="twn-m-body js-room-choose-notused">
+                    <div data-type="1" class="twn-choose-nu selected">自动抢红包</div>
+                    <div data-type="2" class="twn-choose-nu">手动抢红包</div>
                 </div>
                 
             </div>
-            <a class="twm-main-bt js-create-now" href="javascript:;">马上创建</a>
+            <a class="twm-main-bt js-create-now-notused" href="javascript:;">马上创建</a>
         </div>
     </div>
     <!-- 创建房间成功 -->
@@ -80,7 +80,39 @@
         </div>
     </div>
 
+    <!-- 创建房间弹窗 -->
+    <div class="toast-window js-create-room-window hide">
+        <div class="toast-window-mask"></div>
+        <div class="toast-window-main">
+            <div class="twm-title">
+                <div class="twn-t-close"></div>
+                创建房间
+            </div>
+            <div class="twm-main">
+                <div class="twn-m-body min js-room-choose">
+                    <div data-num="10" class="twn-choose selected">10</div>
+                    <div data-num="50" class="twn-choose">50</div>
+                    <div data-num="100" class="twn-choose">100</div>
+                    <div data-num="150" class="twn-choose">150</div>
+                    <div data-num="200" class="twn-choose">200</div>
+                    <div data-num="500" class="twn-choose">500</div>
+                </div>
+            </div>
+            <a class="twm-main-bt js-create-now" href="javascript:;">确认</a>
+        </div>
+    </div>
     <!-- 提示弹窗end -->
+    <!-- 红包弹窗 -->
+    <div class="toast-window js-begin-open hide">
+        <div class="toast-window-mask"></div>
+        <div class="toast-window-redpc">
+            <img class="red-avatar js-begin-avatar" src="./img/page/dg_head.jpg" />
+            <div class="red-name js-begin-nickname">---</div>
+            <div class="red-tips1 js-redrp-open-msg">给你发了一个红包</div>
+            <div class="red-tips2">恭喜获得6.66元红包</div>
+        </div>
+    </div>
+    <!-- 红包弹窗end -->
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="./js/roomlist.js"></script>
 </body>
