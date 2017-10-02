@@ -119,7 +119,7 @@ $(function(){
                         $('.bt-tuichu').show();
                         $('.bt-jiaru').hide();
                         self.getRoomMsg();
-
+                        self.getRoomHB();
                         $.ajax({
                             url: 'http://www.czcycm.com/app/hb/send_text',
                             type: 'post',
@@ -132,13 +132,12 @@ $(function(){
                         setTimeout(function(){
                             if(jdata.data.type == 5){
                                 //window.location.href = '//www.czcycm.com/app/wallet/index';
-                            }else{
-                                //window.location.href='/';
-                            }
-                            if(jdata.data.type == 3){
+                            }else if(jdata.data.type == 1){
+                                window.location.href='/';
+                            }else if(jdata.data.type == 3){
                                 $('.bt-tuichu').removeClass('hide');
                             }
-                        },2800);
+                        },3800);
                     }
                    
                 }else{
@@ -149,6 +148,31 @@ $(function(){
                     // }
                 }
                 console.log(jdata);
+            })
+        },
+        getRoomHB: function(){
+            var self = this;
+            $.ajax({
+                url: 'http://www.czcycm.com/app/hb/get_hb',
+                type: 'post',
+                data: {
+                    room_id: window.location.href.match(/roomid=(\d+)/)[1]
+                }
+            }).done(function(jdata){
+                if(typeof(jdata) == 'string'){
+                    jdata = JSON.parse(jdata);
+                }
+                if(jdata.code == 1){
+                    $('.js-room-main-list').append(self.pageTpl.roomunit({
+                        data: {
+                            type: 'hb',
+                            nickname: jdata.data.nickname,
+                            headimgurl: jdata.data.headimgurl,
+                            hb_id: jdata.data.hb_id,
+                            firstdata: '1'
+                        }
+                    }));
+                }
             })
         },
         getRoomMsg: function(){
@@ -278,8 +302,15 @@ $(function(){
             })
             // /** 领取红包*/
             $('.js-room-main-list').on('click', '.js-redpocket-item', function () {
+                if($(this).find('.user-redpc').hasClass('done')){
+                    return;
+                }
                 var hbId = $(this).data('id');
                 self.openRedpocket(hbId);
+                if($(this).data('oneclick')){
+                    $(this).find('.user-redpc').addClass('done');
+                    $(this).find('.ur-note').html('红包已领取');
+                }
             });
             // $('.js-open-redpc').on('click', function(){
             //     console.log('----');
@@ -312,7 +343,7 @@ $(function(){
             $('.main-toast-window').html(msg).removeClass('hide');
             setTimeout(function(){
                 $('.main-toast-window').addClass('hide');
-            },2800);
+            },3800);
         },
         initSocket: function(option) {
             var self = this;

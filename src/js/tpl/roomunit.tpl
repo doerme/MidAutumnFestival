@@ -7,7 +7,7 @@
     </div>
 </li>
 {{else if data.type == 'hb'}}
-<li class="js-redpocket-item" data-id="{{data.hb_id}}">
+<li class="js-redpocket-item" data-id="{{data.hb_id}}" data-oneclick="{{data.firstdata}}">
     <img class="user-avatar" src="{{data.headimgurl}}" />
     <div class="content-wrap">
         <div class="user-name">{{data.nickname}}</div>

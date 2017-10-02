@@ -11,8 +11,8 @@
     <title>的房间</title>
     <script>!function(e,t){function i(){var t=n.getBoundingClientRect().width;t/m>540&&(t=540*m);var i=t/10;n.style.fontSize=i+"px",d.rem=e.rem=i}var a,r=e.document,n=r.documentElement,o=r.querySelector('meta[name="viewport"]'),l=r.querySelector('meta[name="flexible"]'),m=0,s=0,d=t.flexible||(t.flexible={});if(o){console.warn("将根据已有的meta标签来设置缩放比例");var p=o.getAttribute("content").match(/initial\-scale=([\d\.]+)/);p&&(s=parseFloat(p[1]),m=parseInt(1/s))}else if(l){var c=l.getAttribute("content");if(c){var u=c.match(/initial\-dpr=([\d\.]+)/),f=c.match(/maximum\-dpr=([\d\.]+)/);u&&(m=parseFloat(u[1]),s=parseFloat((1/m).toFixed(2))),f&&(m=parseFloat(f[1]),s=parseFloat((1/m).toFixed(2)))}}if(!m&&!s){e.navigator.appVersion.match(/android/gi);var v=e.navigator.appVersion.match(/iphone/gi),h=e.devicePixelRatio;s=1/(m=v?h>=3&&(!m||m>=3)?3:h>=2&&(!m||m>=2)?2:1:1)}if(n.setAttribute("data-dpr",m),!o)if((o=r.createElement("meta")).setAttribute("name","viewport"),o.setAttribute("content","initial-scale="+s+", maximum-scale="+s+", minimum-scale="+s+', user-scalable=no, shrink-to-fit=no"'),n.firstElementChild)n.firstElementChild.appendChild(o);else{var x=r.createElement("div");x.appendChild(o),r.write(x.innerHTML)}e.addEventListener("resize",function(){clearTimeout(a),a=setTimeout(i,300)},!1),e.addEventListener("pageshow",function(e){e.persisted&&(clearTimeout(a),a=setTimeout(i,300))},!1),"complete"===r.readyState?r.body.style.fontSize=12*m+"px":r.addEventListener("DOMContentLoaded",function(e){r.body.style.fontSize=12*m+"px"},!1),i(),d.dpr=e.dpr=m,d.refreshRem=i,d.rem2px=function(e){var t=parseFloat(e)*this.rem;return"string"==typeof e&&e.match(/rem$/)&&(t+="px"),t},d.px2rem=function(e){var t=parseFloat(e)/this.rem;return"string"==typeof e&&e.match(/px$/)&&(t+="rem"),t}}(window,window.lib||(window.lib={}))</script>
     <meta name="description" content="">
-    <link rel="stylesheet" href="./css/main.css?t=1506922348482">
-    <script src="//cdn.bootcss.com/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js?t=1506922348482"></script>
+    <link rel="stylesheet" href="./css/main.css?t=1506939032896">
+    <script src="//cdn.bootcss.com/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js?t=1506939032896"></script>
 </head>
 
 <body>
@@ -21,9 +21,9 @@
             
         </ul>
         <div class="bt-wrap">
-            <img class="bt-dating" src="./img/page/bt_dating.png?t=1506922348482" />
-            <img class="bt-jiaru hide" src="./img/page/bt_jiaru.png?t=1506922348482" />
-            <img class="bt-tuichu hide" src="./img/page/bt_tuichu.png?t=1506922348482" />
+            <img class="bt-dating" src="./img/page/bt_dating.png?t=1506939032896" />
+            <img class="bt-jiaru hide" src="./img/page/bt_jiaru.png?t=1506939032896" />
+            <img class="bt-tuichu hide" src="./img/page/bt_tuichu.png?t=1506939032896" />
         </div>
         <div class="msg-wrap">
             <input class="main-input js-main-input" type="text" placeholder="请输入消息" value="" />
@@ -37,7 +37,7 @@
     <div class="toast-window js-redrp-open hide">
         <div class="toast-window-mask"></div>
         <div class="toast-window-redpc">
-            <img class="red-avatar js-redrp-open-avatar" src="./img/page/dg_head.jpg?t=1506922348482" />
+            <img class="red-avatar js-redrp-open-avatar" src="./img/page/dg_head.jpg?t=1506939032896" />
             <div class="red-name js-redrp-open-nickname">---</div>
             <div class="red-tips1 js-redrp-open-msg">---</div>
             <div class="red-tips2">恭喜发财，大吉大利</div>
@@ -47,7 +47,7 @@
     <!-- 红包结果 -->
     <div class="redpc-result-wrap js-redpc-rs hide">
         <div class="rrw-close">关闭</div>
-        <img class="rrw-avatar js-flrp-avatar" src="./img/page/dg_head.jpg?t=1506922348482" />
+        <img class="rrw-avatar js-flrp-avatar" src="./img/page/dg_head.jpg?t=1506939032896" />
         <div class="rrw-name js-flrp-name">谢洛克的红包</div>
         <div class="rrw-note js-flrp-note">恭喜发财，大吉大利</div>
         <div class="rrw-money js-flrp-money">6.00<span>元</span></div>
@@ -59,9 +59,9 @@
         你已在大大大房间内，不能同时进两个房间哦
     </div>
     <!-- toast end -->
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js?t=1506922348482"></script>
-    <script src="https://cdn.bootcss.com/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js?t=1506922348482"></script>
-    <script src="./js/room.js?t=1506922348482"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js?t=1506939032896"></script>
+    <script src="https://cdn.bootcss.com/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js?t=1506939032896"></script>
+    <script src="./js/room.js?t=1506939032896"></script>
     
 </body>
 
