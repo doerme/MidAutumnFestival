@@ -1,2 +1,2 @@
-/*TMODJS:{"version":63,"md5":"d440f878627e75addf65ff42bde1e062"}*/
+/*TMODJS:{"version":64,"md5":"d440f878627e75addf65ff42bde1e062"}*/
 template("/Users/xiaominghari/Documents/wanrenqun/MidAutumnFestival/MidAutumnFestival/src/js/tpl/roomlist",function(a){"use strict";var b=this,c=(b.$helpers,b.$each),d=a.data,e=(a.v,a.i,b.$escape),f="";return c(d,function(a){f+=' <li> <img class="rl-avatar" src="',f+=e(a.pic),f+='" /> <div class="rl-name">',f+=e(a.name),f+='</div> <div class="rl-num">\u5728\u7ebf\u4eba\u6570',f+=e(a.numb),f+='</div> <a class="rl-in js-rl-in" href="/app/wallet/room?roomid=',f+=e(a.room_id),f+='" data-id="',f+=e(a.room_id),f+='">\u8fdb\u5165</a> </li> '}),new String(f)});

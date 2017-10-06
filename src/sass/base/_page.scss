@@ -431,10 +431,21 @@
             font-size: rem(30);
             color: #FFF;
             display: block;
-            text-indent: rem(60);
+            // text-indent: rem(60);
             background: #ff6969;
             border-radius: rem(28);
             line-height: rem(70);
+            &::before{
+                content: '';
+                background: url('../img/page/icon_chongzhi.png') no-repeat center center;
+                width: rem(40);
+                height: rem(40);
+                background-size: 100% auto; 
+                display: inline-block;
+                margin-left: rem(20);
+                margin-right: rem(3);
+                vertical-align: text-top;
+            }
         }
         .bt-toshare{
             width: rem(150);
@@ -443,10 +454,21 @@
             font-size: rem(30);
             color: #FFF;
             display: block;
-            text-indent: rem(60);
+            // text-indent: rem(60);
             background: #647cff;
             border-radius: rem(28);
             line-height: rem(70);
+            &::before{
+                content: '';
+                background: url('../img/page/icon_share.png') no-repeat center center;
+                width: rem(30);
+                height: rem(30);
+                background-size: 100% auto;
+                display: inline-block;
+                margin-left: rem(22);
+                margin-right: rem(6);
+                vertical-align: text-top;
+            }
         }
     }
     .msg-wrap{
