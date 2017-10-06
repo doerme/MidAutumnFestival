@@ -3,7 +3,7 @@
     <img class="user-avatar" src="{{data.headimgurl}}" />
     <div class="content-wrap">
         <div class="user-name">{{data.nickname}}</div>
-        <div class="user-msg">{{data.text}}</div>
+        <div class="user-msg">{{#data.text}}</div>
     </div>
 </li>
 {{else if data.type == 'hb'}}

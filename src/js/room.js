@@ -238,6 +238,7 @@ $(function(){
                 if(typeof(jdata) == 'string'){
                     jdata = JSON.parse(jdata);
                     console.log(jdata);
+                    $('.js-redrp-open-msgvalue').html(jdata.data.msg || '恭喜发财，大吉大利');
                     if (jdata.data.je == 0) {
                         // 空的了
                         $('.js-no-redpocket .red-name').html(jdata.data.nickname);
@@ -337,7 +338,15 @@ $(function(){
             $('.rrw-close').on('click', function(){
                 self.getRedpocket = null;
                 $('.js-redpc-rs').addClass('hide');
-            })
+            });
+
+            $('.bt-toshare').on('click', function(){
+                $('.guide-box').removeClass('hide');
+            });
+
+            $('.guide-box').on('click', function(){
+                $('.guide-box').addClass('hide');
+            });
         },
         pageToast: function(msg) {
             $('.main-toast-window').html(msg).removeClass('hide');

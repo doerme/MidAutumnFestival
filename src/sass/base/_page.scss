@@ -3,6 +3,42 @@
     pointer-events: none;
     opacity: 0;
 }
+
+
+.guide-box {
+    z-index: 9555;
+    top: .2rem;
+    z-index: 2015;
+}
+
+.guide-box,.guide-box .guide-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0
+}
+
+.guide-box .guide-mask {
+    background-color: #000;
+    opacity: .8;
+    z-index: 5;
+    top: 0
+}
+
+.guide-box .guide-img {
+    position: absolute;
+    z-index: 10;
+    right: .13333rem;
+    top: 0;
+    width: 7.36rem;
+    height: 1.2rem;
+    background-image: url('../img/page/share-mask.png');
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100%;
+    background-size: 100%
+}
+
 .room-total-num{
     position: fixed;
     top: rem(25);
@@ -387,6 +423,30 @@
         img{
             width: rem(150);
             margin-bottom: rem(25);
+        }
+        .bt-chongzhi{
+            width: rem(150);
+            height: rem(70);
+            margin-bottom: rem(25);
+            font-size: rem(30);
+            color: #FFF;
+            display: block;
+            text-indent: rem(60);
+            background: #ff6969;
+            border-radius: rem(28);
+            line-height: rem(70);
+        }
+        .bt-toshare{
+            width: rem(150);
+            height: rem(70);
+            margin-bottom: rem(25);
+            font-size: rem(30);
+            color: #FFF;
+            display: block;
+            text-indent: rem(60);
+            background: #647cff;
+            border-radius: rem(28);
+            line-height: rem(70);
         }
     }
     .msg-wrap{
