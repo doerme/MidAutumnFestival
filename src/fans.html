@@ -21,16 +21,19 @@
                 <img class="fans-avatar" src="../img/page/dg_head.jpg" />
                 <div class="fans-name">七月</div>
                 <div class="fan-local">广东 广州</div>
+                <div class="fan-agent">设置为代理</div>
             </li>
             <li>
                 <img class="fans-avatar" src="../img/page/dg_head.jpg" />
                 <div class="fans-name">七月</div>
                 <div class="fan-local">广东 广州</div>
+                <div class="fan-agent">设置为代理</div>
             </li>
             <li>
                 <img class="fans-avatar" src="../img/page/dg_head.jpg" />
                 <div class="fans-name">七月</div>
                 <div class="fan-local">广东 广州</div>
+                <div class="fan-agent">设置为代理</div>
             </li>
         </ul>
         <div class="loading-tips">正在加载更多...</div>
@@ -43,6 +46,25 @@
             <li ><a href="wallet.html">钱包</a></li>
         </ul>
     </div>
+
+    <!-- 代理弹窗 -->
+    <div class="toast-window js-dl-window hide">
+        <div class="toast-window-mask"></div>
+        <div class="toast-window-main">
+            <div class="twm-title">
+                <div class="twn-t-close"></div>
+                设置为代理
+            </div>
+            <div class="twm-main">
+                <div class="twn-font-block">
+                    <p>是否扣除<span>398元</span>余额</p>
+                    <p>设置<span>安生</span>为代理</p>
+                </div>
+            </div>
+            <a class="twm-main-bt js-dl-now" href="javascript:;">确认</a>
+        </div>
+    </div>
+    <!-- 代理弹窗end -->
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script>    
         $(function(){
@@ -53,7 +75,22 @@
                 },
                 bindEvent: function(){
                     var self = this;
-                    
+
+                    $('.fan-agent').on('click', function(){
+                        $('.js-dl-window').removeClass('hide');
+                    })
+                    /** 弹窗确认按钮*/
+                    $('.js-dl-now').on('click', function(){
+                        $('.js-dl-window').addClass('hide');
+                    })
+                    /** 通用弹窗关闭*/
+                    $('.toast-window-mask').on('click', function(){
+                        $(this).parent('.toast-window').addClass('hide');
+                    })
+                    /** 通用弹窗关闭*/
+                    $('.twn-t-close, .js-win-close').on('click', function(){
+                        $(this).parents('.toast-window').addClass('hide');
+                    })
                 }
             }
             app.init();

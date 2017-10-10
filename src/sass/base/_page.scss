@@ -168,6 +168,19 @@
             padding-top: rem(40);
             padding-bottom: rem(45);
             overflow: hidden;
+            .twn-font-block{
+                text-align: center;
+                p{
+                    height: rem(50);
+                    line-height: rem(50);
+                    font-size: rem(35);
+                    color: #666;
+                    span{
+                        color: #000;
+                        font-weight: bold;
+                    }
+                }
+            }
             .success{
                 display: block;
                 margin-left: auto;
@@ -823,8 +836,22 @@
                 position: absolute;
                 font-size: rem(24);
                 color: #a8a8a8;
-                right: 0;
+                right: rem(180);
                 top: 0;
+            }
+            .fan-agent{
+                position: absolute;
+                display: block;
+                width: rem(145);
+                height: rem(70);
+                font-size: rem(24);
+                line-height: rem(70);
+                text-align: center;
+                color: #666;
+                background: #fedd00;
+                border-radius: rem(20);
+                right: rem(0);
+                top: rem(28);
             }
         }
     }
@@ -1036,6 +1063,10 @@
     height: 100%;
     left: 0;
     top:0;
+    &.p404{
+        background: url('../img/page/qr404.png') no-repeat center top;
+        background-size: 100% auto; 
+    }
     .user-head{
         position: absolute;
         width: rem(105);
