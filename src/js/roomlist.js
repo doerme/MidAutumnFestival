@@ -85,13 +85,14 @@ $(function(){
             var self = this;
             var createRoomType = 10;
             // 首次红包跳转
+            // 跳到这个地址http://www.czcycm.com/app/wallet/vip
             $('.js-begin-open').on('click', function(){
                 window.location.href='http://www.czcycm.com/app/wallet/index';
             })
             // 代理
             $('.roomlist-banner').on('click', function () {
                 if($(this).attr('isvip') == '1'){
-                    window.location.href = '/app/wallet/index';
+                    window.location.href = '/app/wallet/vip';
                 }else{
                     self.payCard();
                 }
